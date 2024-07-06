@@ -1,11 +1,13 @@
 let express = require('express');
 let app = express();
 let dotenv = require('dotenv');
-const { json } = require('body-parser');
+const { json, urlencoded} = require('body-parser');
 
-app.route('/name').get((req, res) => {
-  res.json({ name: `${req.query.first} ${req.query.last}` })
-})
+app.use(urlencoded({extended: false}))
+
+// app.route('/name').get((req, res) => {
+//   res.json({ name: `${req.query.first} ${req.query.last}` })
+// })
 
 // app.get('/:word/echo', (req, res) => {
 //   res.json({echo: req.params.word})
