@@ -3,6 +3,10 @@ let app = express();
 let dotenv = require('dotenv');
 const { json } = require('body-parser');
 
+app.get('/:word/echo', (req, res) => {
+  res.json({echo: req.params.word})
+})
+
 // load the environment variables
 // dotenv.config();
 
@@ -28,12 +32,12 @@ const { json } = require('body-parser');
 //   res.json({"message": message})
 // })
 
-app.get('/now', (req, res, next) => {
-  req.time = new Date().toString();
-  next()
-}, (req, res) => {
-  res.json({time: req.time})
-})
+// app.get('/now', (req, res, next) => {
+//   req.time = new Date().toString();
+//   next()
+// }, (req, res) => {
+//   res.json({time: req.time})
+// })
 
 
 
