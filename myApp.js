@@ -5,9 +5,13 @@ const { json, urlencoded} = require('body-parser');
 
 app.use(urlencoded({extended: false}))
 
-// app.route('/name').get((req, res) => {
-//   res.json({ name: `${req.query.first} ${req.query.last}` })
-// })
+app.route('/name')
+.get((req, res) => {
+  res.json({ name: `${req.query.first} ${req.query.last}` })
+})
+.post((req, res)=>{
+  res.json({ name: `${req.body.first} ${req.body.last}` })
+})
 
 // app.get('/:word/echo', (req, res) => {
 //   res.json({echo: req.params.word})
@@ -23,12 +27,12 @@ app.use(urlencoded({extended: false}))
 //   next();
 // })
 
-// app.use('/public', express.static(__dirname + '/public'))
+app.use('/public', express.static(__dirname + '/public'))
 
-// app.get('/', (req, res) => {
-//   // res.send('Hello Express');
-//   res.sendFile(__dirname + '/views/index.html');
-// })
+app.get('/', (req, res) => {
+  // res.send('Hello Express');
+  res.sendFile(__dirname + '/views/index.html');
+})
 
 // app.get('/json', (req, res) => {
 //   let message = "Hello json";
