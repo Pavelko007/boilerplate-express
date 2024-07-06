@@ -3,9 +3,13 @@ let app = express();
 let dotenv = require('dotenv');
 const { json } = require('body-parser');
 
-app.get('/:word/echo', (req, res) => {
-  res.json({echo: req.params.word})
+app.route('/name').get((req, res) => {
+  res.json({ name: `${req.query.first} ${req.query.last}` })
 })
+
+// app.get('/:word/echo', (req, res) => {
+//   res.json({echo: req.params.word})
+// })
 
 // load the environment variables
 // dotenv.config();
